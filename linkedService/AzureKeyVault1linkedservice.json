@@ -1,0 +1,10 @@
+{
+	"name": "AzureKeyVault1linkedservice",
+	"properties": {
+		"annotations": [],
+		"type": "AzureKeyVault",
+		"typeProperties": {
+			"baseUrl": "https://nareshadf.vault.azure.net/"
+		}
+	}
+}
