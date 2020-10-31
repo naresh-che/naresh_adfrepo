@@ -1,0 +1,37 @@
+{
+	"name": "WranglingDataFlow2join",
+	"properties": {
+		"type": "WranglingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"name": "empdatasetjoin",
+					"script": "",
+					"dataset": {
+						"referenceName": "empdatasetjoin",
+						"type": "DatasetReference"
+					}
+				},
+				{
+					"name": "deptdatadataset",
+					"script": "",
+					"dataset": {
+						"referenceName": "deptdatadataset",
+						"type": "DatasetReference"
+					}
+				}
+			],
+			"sinks": [
+				{
+					"name": "Sink1",
+					"dataset": {
+						"referenceName": "wranglngoutputjoin",
+						"type": "DatasetReference"
+					},
+					"script": "sink(input(\n\t\tColumn_1 as string,\n\t\tColumn_2 as string,\n\t\tColumn_3 as string,\n\t\tColumn_4 as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> Sink1"
+				}
+			],
+			"script": "section Section1;\r\nshared empdatasetjoin = let\r\n  AdfDoc = AzureStorage.BlobContents(\"https://teststoragenaresh.blob.core.windows.net/testcontainer/input/emp.csv\"),\r\n  Csv = Csv.Document(AdfDoc, [Delimiter = \",\", Encoding = TextEncoding.Utf8, QuoteStyle = QuoteStyle.Csv]),\r\n  PromotedHeaders = Table.PromoteHeaders(Csv, [PromoteAllScalars = true]),\r\n  #\"Grouped rows\" = Table.Group(PromotedHeaders, {\"empid\"}, {{\"Count\", each List.Average([empid]), type nullable number}}),\r\n  Navigation = #\"Grouped rows\"{[empid = \"100\"]}[Count]\r\nin\r\n  Navigation;\r\nshared deptdatadataset = let\r\n  AdfDoc = AzureStorage.BlobContents(\"https://teststoragenaresh.blob.core.windows.net/testcontainer/input/dept.csv\"),\r\n  Csv = Csv.Document(AdfDoc, [Delimiter = \",\", Encoding = TextEncoding.Utf8, QuoteStyle = QuoteStyle.Csv]),\r\n  PromotedHeaders = Table.PromoteHeaders(Csv, [PromoteAllScalars = true]),\r\n  #\"Grouped rows\" = Table.Group(PromotedHeaders, {\"deptno\"}, {{\"Count\", each Table.RowCount(_), Int64.Type}})\r\nin\r\n  #\"Grouped rows\";\r\nshared UserQuery = let\r\n  Source = empdatasetjoin,\r\n  #\"Merged queries\" = Table.NestedJoin(Source, {\"deptid\"}, deptdatadataset, {\"deptno\"}, \"deptdatadataset\", JoinKind.Inner),\r\n  #\"Expanded deptdatadataset\" = Table.ExpandTableColumn(#\"Merged queries\", \"deptdatadataset\", {\"deptno\", \"deptname\"}, {\"deptdatadataset.deptno\", \"deptdatadataset.deptname\"})\r\nin\r\n  #\"Expanded deptdatadataset\";\r\n"
+		}
+	}
+}

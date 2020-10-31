@@ -1,0 +1,20 @@
+{
+	"name": "deleteactivitydataset",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "linkedserviceforAdfnareshnew",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Binary",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "map1.txt",
+				"folderPath": "output",
+				"container": "testcontainer"
+			}
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

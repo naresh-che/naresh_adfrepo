@@ -1,0 +1,44 @@
+{
+	"name": "paramterdataflow",
+	"properties": {
+		"activities": [
+			{
+				"name": "dataflowparms",
+				"type": "ExecuteDataFlow",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"dataflow": {
+						"referenceName": "dataflowparms",
+						"type": "DataFlowReference",
+						"parameters": {
+							"param1": {
+								"value": "'@{pipeline().parameters.param}'",
+								"type": "Expression"
+							}
+						}
+					},
+					"compute": {
+						"coreCount": 8,
+						"computeType": "General"
+					}
+				}
+			}
+		],
+		"parameters": {
+			"param": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"lastPublishTime": "2020-10-31T07:02:17Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

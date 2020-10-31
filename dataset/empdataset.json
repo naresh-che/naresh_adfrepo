@@ -1,0 +1,20 @@
+{
+	"name": "empdataset",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "linkedserviceforAdfnareshnew",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Binary",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "emp.txt",
+				"folderPath": "input",
+				"container": "testcontainer"
+			}
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

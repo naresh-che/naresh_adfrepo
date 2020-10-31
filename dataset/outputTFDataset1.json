@@ -1,0 +1,27 @@
+{
+	"name": "outputTFDataset1",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "linkedserviceforAdfnareshnew",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"OutputFolders": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "Binary",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"folderPath": {
+					"value": "@dataset().OutputFolders",
+					"type": "Expression"
+				},
+				"container": "testcontainer"
+			}
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}
