@@ -1,0 +1,27 @@
+{
+	"name": "dateerrorhandling",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "dateerrorsource",
+						"type": "DatasetReference"
+					},
+					"name": "source1"
+				}
+			],
+			"sinks": [],
+			"transformations": [
+				{
+					"name": "ConditionalSplit1"
+				},
+				{
+					"name": "DerivedColumn1"
+				}
+			],
+			"script": "source(output(\n\t\tDate as string,\n\t\tempname as string,\n\t\tsalary as string,\n\t\tdeptid as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false) ~> source1\nsource1 split(isNull(toDate(Date, 'dd-MMM-yyyy')),\n\tdisjoint: false) ~> ConditionalSplit1@(errorrows, goodrows)\nConditionalSplit1@goodrows derive(datenew = toDate(Date,'dd-MMM-yy'),\n\t\tsalarynew = toInteger(salary)) ~> DerivedColumn1"
+		}
+	}
+}
