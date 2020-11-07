@@ -1,0 +1,22 @@
+{
+	"name": "newfilesoutput",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "linkedservicenareshkeys",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"folderPath": "targetfile",
+				"container": "testcontainer"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"quoteChar": "\""
+		},
+		"schema": []
+	}
+}
