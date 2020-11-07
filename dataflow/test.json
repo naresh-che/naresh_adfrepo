@@ -1,0 +1,27 @@
+{
+	"name": "test",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "date",
+						"type": "DatasetReference"
+					},
+					"name": "source1"
+				}
+			],
+			"sinks": [],
+			"transformations": [
+				{
+					"name": "ConditionalSplit1"
+				},
+				{
+					"name": "DerivedColumn1"
+				}
+			],
+			"script": "source(output(\n\t\tDate as string,\n\t\tempname as string,\n\t\tsalary as string,\n\t\tdeptid as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false) ~> source1\nsource1 split(isNull(toDate(Date, 'dd-MMM-yyyy')),\n\tdisjoint: false) ~> ConditionalSplit1@(badrow, goodrow)\nConditionalSplit1@goodrow derive(Date = toDate(Date, 'dd-MMM-yy'),\n\t\tsalary = toInteger(salary)) ~> DerivedColumn1"
+		}
+	}
+}
