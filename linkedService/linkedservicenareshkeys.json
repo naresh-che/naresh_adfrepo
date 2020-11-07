@@ -1,0 +1,17 @@
+{
+	"name": "linkedservicenareshkeys",
+	"properties": {
+		"annotations": [],
+		"type": "AzureBlobStorage",
+		"typeProperties": {
+			"connectionString": {
+				"type": "AzureKeyVaultSecret",
+				"store": {
+					"referenceName": "AzureKeyVault1linkedservice",
+					"type": "LinkedServiceReference"
+				},
+				"secretName": "nareshscreates"
+			}
+		}
+	}
+}
