@@ -65,19 +65,13 @@
 									"referenceName": "Binary2",
 									"type": "DatasetReference",
 									"parameters": {
-										"file name": {
+										"filename": {
 											"value": "@item().name",
 											"type": "Expression"
 										}
 									}
 								},
-								"logStorageSettings": {
-									"linkedServiceName": {
-										"referenceName": "AzureBlobStorage1",
-										"type": "LinkedServiceReference"
-									}
-								},
-								"enableLogging": true,
+								"enableLogging": false,
 								"storeSettings": {
 									"type": "AzureBlobStorageReadSettings",
 									"recursive": true
