@@ -1,0 +1,24 @@
+{
+	"name": "dataflow2",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "DelimitedText4",
+						"type": "DatasetReference"
+					},
+					"name": "source1"
+				}
+			],
+			"sinks": [],
+			"transformations": [
+				{
+					"name": "Window1"
+				}
+			],
+			"script": "source(output(\n\t\tempid as string,\n\t\tempname as string,\n\t\tsalary as string,\n\t\tdeptid as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false) ~> source1\nsource1 window(asc(empid, true),\n\tsumof = sum(toInteger(salary))) ~> Window1"
+		}
+	}
+}
