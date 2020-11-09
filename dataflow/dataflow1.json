@@ -16,9 +16,12 @@
 			"transformations": [
 				{
 					"name": "Aggregate1"
+				},
+				{
+					"name": "Sort1"
 				}
 			],
-			"script": "source(output(\n\t\tDate as string,\n\t\tempname as string,\n\t\tsalary as string,\n\t\tdeptid as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false) ~> source1\nsource1 aggregate(groupBy(deptid),\n\teach(match(name != 'deptid'), $$ = first($$))) ~> Aggregate1"
+			"script": "source(output(\n\t\tDate as string,\n\t\tempname as string,\n\t\tsalary as string,\n\t\tdeptid as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false) ~> source1\nsource1 aggregate(groupBy(deptid),\n\teach(match(name != 'deptid'), $$ = first($$))) ~> Aggregate1\nAggregate1 sort(desc(salary, true)) ~> Sort1"
 		}
 	}
 }
