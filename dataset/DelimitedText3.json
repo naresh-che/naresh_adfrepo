@@ -2,7 +2,7 @@
 	"name": "DelimitedText3",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "AzureBlobStorage1",
+			"referenceName": "AzureBlobStorage3",
 			"type": "LinkedServiceReference"
 		},
 		"annotations": [],
@@ -10,31 +10,25 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
-				"fileName": "datefile.csv",
-				"container": "testnari"
+				"fileName": "datefile1.csv",
+				"folderPath": "input",
+				"container": "test"
 			},
 			"columnDelimiter": ",",
 			"escapeChar": "\\",
-			"firstRowAsHeader": true,
 			"quoteChar": "\""
 		},
 		"schema": [
 			{
-				"name": "Date",
 				"type": "String"
 			},
 			{
-				"name": "empname",
 				"type": "String"
 			},
 			{
-				"name": "salary",
-				"type": "String"
-			},
-			{
-				"name": "seqno",
 				"type": "String"
 			}
 		]
-	}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
 }

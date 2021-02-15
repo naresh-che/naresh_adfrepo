@@ -10,27 +10,31 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
-				"fileName": "datefile1.csv",
-				"container": "testnari"
+				"fileName": "person.csv",
+				"folderPath": "input",
+				"container": "test"
 			},
 			"columnDelimiter": ",",
 			"escapeChar": "\\",
-			"firstRowAsHeader": true,
 			"quoteChar": "\""
 		},
 		"schema": [
 			{
-				"name": "Date",
 				"type": "String"
 			},
 			{
-				"name": "empname",
 				"type": "String"
 			},
 			{
-				"name": "salary",
+				"type": "String"
+			},
+			{
+				"type": "String"
+			},
+			{
 				"type": "String"
 			}
 		]
-	}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
 }
