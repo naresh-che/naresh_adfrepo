@@ -1,0 +1,9 @@
+{
+	"name": "July2021",
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "0c0a3f2e-2cd8-46d1-b207-7efcc7e0f0bf",
+		"tenantId": "2539984e-c54a-4868-b3be-aa225655213e"
+	}
+}
