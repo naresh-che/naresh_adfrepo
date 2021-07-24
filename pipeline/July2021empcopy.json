@@ -17,6 +17,12 @@
 				"typeProperties": {
 					"source": {
 						"type": "DelimitedTextSource",
+						"additionalColumns": [
+							{
+								"name": "locaton",
+								"value": ""
+							}
+						],
 						"storeSettings": {
 							"type": "AzureBlobStorageReadSettings",
 							"recursive": true,
@@ -31,10 +37,19 @@
 						"type": "DelimitedTextSink",
 						"storeSettings": {
 							"type": "AzureBlobStorageWriteSettings",
-							"copyBehavior": "MergeFiles"
+							"metadata": [
+								{
+									"name": "df",
+									"value": {
+										"value": "@pipeline().DataFactory",
+										"type": "Expression"
+									}
+								}
+							]
 						},
 						"formatSettings": {
 							"type": "DelimitedTextWriteSettings",
+							"maxRowsPerFile": 2,
 							"quoteAllText": true,
 							"fileExtension": ".txt"
 						}
