@@ -10,7 +10,6 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
-				"fileName": "filesnames.txt",
 				"folderPath": "Input",
 				"container": "july2021containers"
 			},

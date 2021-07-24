@@ -19,9 +19,7 @@
 						"type": "DelimitedTextSource",
 						"storeSettings": {
 							"type": "AzureBlobStorageReadSettings",
-							"recursive": true,
-							"wildcardFolderPath": "Input",
-							"wildcardFileName": "*.csv",
+							"fileListPath": "july2021containers/Input/filesnames.txt",
 							"enablePartitionDiscovery": false
 						},
 						"formatSettings": {
