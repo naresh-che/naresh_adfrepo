@@ -1,0 +1,22 @@
+{
+	"name": "dataflowemp",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "july2021linkedservices",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"folderPath": "output3",
+				"container": "july2021containers"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"quoteChar": "\""
+		},
+		"schema": []
+	}
+}
