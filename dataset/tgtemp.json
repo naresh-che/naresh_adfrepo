@@ -10,7 +10,7 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
-				"folderPath": "output",
+				"folderPath": "output2",
 				"container": "july2021containers"
 			},
 			"columnDelimiter": ",",
