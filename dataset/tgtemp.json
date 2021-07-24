@@ -10,7 +10,8 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
-				"folderPath": "output2",
+				"fileName": "empmerge.txt",
+				"folderPath": "output3",
 				"container": "july2021containers"
 			},
 			"columnDelimiter": ",",

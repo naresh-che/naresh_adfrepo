@@ -19,8 +19,9 @@
 						"type": "DelimitedTextSource",
 						"storeSettings": {
 							"type": "AzureBlobStorageReadSettings",
-							"fileListPath": "july2021containers/Input/filesnames.txt",
-							"enablePartitionDiscovery": false
+							"recursive": true,
+							"enablePartitionDiscovery": false,
+							"prefix": "output3/emp"
 						},
 						"formatSettings": {
 							"type": "DelimitedTextReadSettings"
@@ -29,7 +30,8 @@
 					"sink": {
 						"type": "DelimitedTextSink",
 						"storeSettings": {
-							"type": "AzureBlobStorageWriteSettings"
+							"type": "AzureBlobStorageWriteSettings",
+							"copyBehavior": "MergeFiles"
 						},
 						"formatSettings": {
 							"type": "DelimitedTextWriteSettings",
