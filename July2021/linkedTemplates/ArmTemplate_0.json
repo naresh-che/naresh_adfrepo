@@ -73,7 +73,7 @@
 				"typeProperties": {
 					"location": {
 						"type": "AzureBlobStorageLocation",
-						"fileName": "emp.csv",
+						"fileName": "filesnames.txt",
 						"folderPath": "Input",
 						"container": "july2021containers"
 					},
@@ -115,8 +115,7 @@
 				"typeProperties": {
 					"location": {
 						"type": "AzureBlobStorageLocation",
-						"fileName": "emp.csv",
-						"folderPath": "output",
+						"folderPath": "output2",
 						"container": "july2021containers"
 					},
 					"columnDelimiter": ",",
@@ -154,6 +153,8 @@
 								"storeSettings": {
 									"type": "AzureBlobStorageReadSettings",
 									"recursive": true,
+									"wildcardFolderPath": "Input",
+									"wildcardFileName": "*.csv",
 									"enablePartitionDiscovery": false
 								},
 								"formatSettings": {
