@@ -49,6 +49,8 @@
 						"value": "@activity('Get Metadata1').output.Childitems",
 						"type": "Expression"
 					},
+					"isSequential": false,
+					"batchCount": 0,
 					"activities": [
 						{
 							"name": "Copy data1",
