@@ -7,7 +7,7 @@
 				"type": "SetVariable",
 				"dependsOn": [
 					{
-						"activity": "Append variable1",
+						"activity": "Get Metadata1",
 						"dependencyConditions": [
 							"Succeeded"
 						]
@@ -66,18 +66,26 @@
 				"typeProperties": {
 					"variableName": "varable",
 					"value": {
-						"value": "@activity('Get Metadata1').output.childitems",
+						"value": "@pipeline().parameters.param",
 						"type": "Expression"
 					}
 				}
 			}
 		],
+		"parameters": {
+			"param": {
+				"type": "string",
+				"defaultValue": "Naresh"
+			}
+		},
 		"variables": {
 			"varable": {
-				"type": "Array"
-			},
-			"varaible1": {
-				"type": "Array"
+				"type": "Array",
+				"defaultValue": [
+					"A",
+					"B",
+					"C"
+				]
 			}
 		},
 		"annotations": []
