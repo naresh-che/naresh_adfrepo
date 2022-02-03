@@ -1,0 +1,9 @@
+{
+	"name": "rnrserene1",
+	"location": "westus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "72fbe536-c9c1-4aa0-beed-5a80e09ae348",
+		"tenantId": "604c1504-c6a3-4080-81aa-b33091104187"
+	}
+}
